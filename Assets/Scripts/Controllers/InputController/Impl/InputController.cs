@@ -1,5 +1,6 @@
 ﻿using System;
 using Controllers.Interfaces;
+using Controllers.MainController;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,7 @@ namespace Controllers.InputController.Impl
 
         private readonly Controls _controls = new ();
         
-        public InputController(MainController.Impl.MainController mainController)
+        public InputController(IMainController mainController)
         {
             mainController.AddController(this);
             
