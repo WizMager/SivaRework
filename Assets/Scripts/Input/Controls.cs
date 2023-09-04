@@ -35,6 +35,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""4fa981e3-4476-4ead-9818-795cf52bed08"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GetRotateCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""08cd78f9-b4dd-4ab1-8ff2-7b5de7b5126c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +110,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cb9826a-3a65-4980-9454-6d13f3a84d46"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1f02003-36b1-4ca7-af29-94177b35d661"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetRotateCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +141,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // KeyboardAndMouse
         m_KeyboardAndMouse = asset.FindActionMap("KeyboardAndMouse", throwIfNotFound: true);
         m_KeyboardAndMouse_Move = m_KeyboardAndMouse.FindAction("Move", throwIfNotFound: true);
+        m_KeyboardAndMouse_RotateMouse = m_KeyboardAndMouse.FindAction("RotateMouse", throwIfNotFound: true);
+        m_KeyboardAndMouse_GetRotateCamera = m_KeyboardAndMouse.FindAction("GetRotateCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,11 +205,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_KeyboardAndMouse;
     private List<IKeyboardAndMouseActions> m_KeyboardAndMouseActionsCallbackInterfaces = new List<IKeyboardAndMouseActions>();
     private readonly InputAction m_KeyboardAndMouse_Move;
+    private readonly InputAction m_KeyboardAndMouse_RotateMouse;
+    private readonly InputAction m_KeyboardAndMouse_GetRotateCamera;
     public struct KeyboardAndMouseActions
     {
         private @Controls m_Wrapper;
         public KeyboardAndMouseActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_KeyboardAndMouse_Move;
+        public InputAction @RotateMouse => m_Wrapper.m_KeyboardAndMouse_RotateMouse;
+        public InputAction @GetRotateCamera => m_Wrapper.m_KeyboardAndMouse_GetRotateCamera;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardAndMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,6 +226,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @RotateMouse.started += instance.OnRotateMouse;
+            @RotateMouse.performed += instance.OnRotateMouse;
+            @RotateMouse.canceled += instance.OnRotateMouse;
+            @GetRotateCamera.started += instance.OnGetRotateCamera;
+            @GetRotateCamera.performed += instance.OnGetRotateCamera;
+            @GetRotateCamera.canceled += instance.OnGetRotateCamera;
         }
 
         private void UnregisterCallbacks(IKeyboardAndMouseActions instance)
@@ -187,6 +239,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @RotateMouse.started -= instance.OnRotateMouse;
+            @RotateMouse.performed -= instance.OnRotateMouse;
+            @RotateMouse.canceled -= instance.OnRotateMouse;
+            @GetRotateCamera.started -= instance.OnGetRotateCamera;
+            @GetRotateCamera.performed -= instance.OnGetRotateCamera;
+            @GetRotateCamera.canceled -= instance.OnGetRotateCamera;
         }
 
         public void RemoveCallbacks(IKeyboardAndMouseActions instance)
@@ -207,5 +265,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IKeyboardAndMouseActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnRotateMouse(InputAction.CallbackContext context);
+        void OnGetRotateCamera(InputAction.CallbackContext context);
     }
 }
