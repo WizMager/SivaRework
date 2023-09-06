@@ -1,7 +1,12 @@
-﻿namespace BehaviorTree
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace BehaviorTree
 {
     public class Selector : Node
     {
+        public Selector(List<Node> children) : base(children){}
+        
         public override NodeState Evaluate()
         {
             foreach (var child in Children)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace BehaviorTree
 {
@@ -14,16 +15,16 @@ namespace BehaviorTree
         protected NodeState State;
 
         public Node Parent;
-        protected List<Node> Children;
+        protected readonly List<Node> Children = new ();
 
-        private Dictionary<string, object> _dataContext = new();
+        private readonly Dictionary<string, object> _dataContext = new();
 
-        public Node()
+        protected Node()
         {
             Parent = null;
         }
 
-        public Node(List<Node> children)
+        protected Node(List<Node> children)
         {
             foreach (var child in children)
             {
