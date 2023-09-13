@@ -17,14 +17,11 @@ namespace Assets.Scripts.Controllers.Parameters
             switch (parameter)
             {
                 case EParameters.Armor:
-
                     break;
                 case EParameters.CritRate:
                     break;
                 case EParameters.Dexterity:
-                    var dexterity = parameters.GetParameter(EParameters.Dexterity);
-                    var critRate = parameters.GetParameter(EParameters.CritRate);
-                    critRate += dexterity * 0.02f;
+                    parameters.SetParameter(EParameters.CritRate, value * 0.02f); // for example
                     break;
                 case EParameters.EnergyRecovery:
                     break;
