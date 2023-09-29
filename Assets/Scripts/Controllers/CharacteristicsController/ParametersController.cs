@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 
 namespace Controllers.CharacteristicsController
 {

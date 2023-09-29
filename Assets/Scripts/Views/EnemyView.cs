@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
 using CharacterParameters.Interfaces;
-using System;
+using CharacterParameters.UnitsParameters;
 using UnityEngine;
 
-namespace Assets.Scripts.Views
+namespace Views
 {
     public class EnemyView : MonoBehaviour, IDamagable
     {

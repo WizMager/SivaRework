@@ -1,45 +1,50 @@
 ﻿using Assets.Scripts.CharacterParameters.Interfaces;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
-using Assets.Scripts.Controllers.EnemyController;
-using Assets.Scripts.Views;
+using Assets.Scripts.Factory;
+using CharacterParameters.UnitsParameters;
+using Controllers.EnemyController;
 using UnityEngine;
+using Views;
 
-namespace Assets.Scripts.Factory.ConcreteFactory
+namespace Factory.ConcreteFactory
 {
     public class EnemyFactory : AEnemyFactory
     {
         private readonly IEnemyParameters _enemyParameters;
+        private readonly IPrefabBase _prefabBase;
 
-        public EnemyFactory(IEnemyParameters enemyParameters)
+        public EnemyFactory(
+            IEnemyParameters enemyParameters,
+            IPrefabBase prefabBase)
         {
             _enemyParameters = enemyParameters;
+            _prefabBase = prefabBase;
         }
 
         public override void CreateEnemy(EEnemyType enemyType)
         {
             switch (enemyType)
             {
-                case EEnemyType.zombie:
+                case EEnemyType.Zombie:
                     CreateZombie();
                     break;
-                case EEnemyType.skeleton:
+                case EEnemyType.Skeleton:
                     break;
-                case EEnemyType.warlock:
+                case EEnemyType.Warlock:
                     break;
             }
         }
 
-        public void CreateZombie()
+        private void CreateZombie()
         {
-            GameObject prefabPlaseholder = new(name: "TestEnemy");
+            var prefab = _prefabBase.GetPrefabBase(EEnemyType.Zombie.ToString());
 
-            var enemy = Object.Instantiate(prefabPlaseholder, new Vector3(0,0,5), Quaternion.identity);
+            var enemy = Object.Instantiate(prefab, new Vector3(0,0,5), Quaternion.identity);
 
             var enemyView = enemy.GetComponent<EnemyView>();
 
-            var enemyParameters = _enemyParameters.GetParametersByType(EEnemyType.zombie);
+            var enemyParameters = _enemyParameters.GetParametersByType(EEnemyType.Zombie);
 
-            new EnemyController(EEnemyType.zombie, enemyParameters, enemyView);
+            new EnemyController(EEnemyType.Zombie, enemyParameters, enemyView);
         }
     }
 }

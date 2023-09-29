@@ -1,13 +1,13 @@
-﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+﻿using CharacterParameters.UnitsParameters;
 using UnityEngine;
 
 namespace Assets.Scripts.Factory.ConcreteUnits
 {
     public class Zombie : Enemy
     {
-        public Zombie() : base(EEnemyType.zombie)
+        public Zombie() : base(EEnemyType.Zombie)
         {
-            Debug.Log($"Created {EEnemyType.zombie}");
+            Debug.Log($"Created {EEnemyType.Zombie}");
         }
     }
 }

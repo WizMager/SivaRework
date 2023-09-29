@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts.CharacterParameters.Interfaces;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
+using CharacterParameters.Interfaces;
+using CharacterParameters.UnitsParameters;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Installers
+namespace Installers
 {
     public class UnitInstaller : MonoInstaller
     {
@@ -13,9 +15,9 @@ namespace Assets.Scripts.Installers
 
         public override void InstallBindings()
         {
-            Container.Bind<IPlayerParameters>().FromInstance(playerParameters).AsSingle();
+            Container.Bind<IPlayerParametersBase>().FromInstance(playerParameters).AsSingle();
             Container.Bind<IEnemyParameters>().FromInstance(enemyParameters).AsSingle();
-            Container.Bind<IBaseParameters>().FromInstance(prefabBase).AsSingle();
+            Container.Bind<IPrefabBase>().FromInstance(prefabBase).AsSingle();
         }
     }
 }

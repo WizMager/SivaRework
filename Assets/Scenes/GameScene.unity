@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1423265903}
-  camera: {fileID: 731299661}
+  camera: {fileID: 0}
 --- !u!4 &682873192
 Transform:
   m_ObjectHideFlags: 0
@@ -456,6 +456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 682873191}
+  playerParameters: {fileID: 11400000, guid: 8ea9f20ce01214a4186671db8ebbcca5, type: 2}
+  enemyParameters: {fileID: 11400000, guid: f2c29012969373646baeefe41b389f35, type: 2}
+  prefabBase: {fileID: 11400000, guid: b3a3f8a9dc4b56346ab4ed7b77a983be, type: 2}
 --- !u!4 &1332359807
 Transform:
   m_ObjectHideFlags: 0
@@ -583,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9707747d27942008d07fdbcc496541b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerParameters: {fileID: 11400000, guid: 8ea9f20ce01214a4186671db8ebbcca5, type: 2}
+  playerParameters: {fileID: 0}
   playerType: 0
 --- !u!1 &1488869085
 GameObject:

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+﻿using CharacterParameters.UnitsParameters;
 using UnityEngine;
 
 namespace Assets.Scripts.Factory.ConcreteUnits

@@ -1,8 +1,6 @@
-﻿using System;
-using Assets.Scripts.Factory.ConcreteFactory;
-using Controllers;
+﻿using CharacterParameters.UnitsParameters;
 using Controllers.MainController.Impl;
-using UniRx;
+using Factory.ConcreteFactory;
 using UnityEngine;
 using Zenject;
 
@@ -19,7 +17,7 @@ public class Main : MonoBehaviour
     private void Start()
     {
         _mainController.Start();
-        _enemyFactory.CreateZombie();
+        _enemyFactory.CreateEnemy(EEnemyType.Zombie);
     }
 
     private void Update()

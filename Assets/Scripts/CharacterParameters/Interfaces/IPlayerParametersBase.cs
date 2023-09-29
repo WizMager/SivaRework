@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
 
-namespace Assets.Scripts.CharacterParameters.Interfaces
+namespace CharacterParameters.Interfaces
 {
-    public interface IPlayerParameters
+    public interface IPlayerParametersBase
     {
         public PlayerParameters GetParametersByType(EPlayerType unitsType);
     }

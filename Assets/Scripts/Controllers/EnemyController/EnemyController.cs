@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
-using Assets.Scripts.Views;
+using CharacterParameters.UnitsParameters;
+using Views;
 
-namespace Assets.Scripts.Controllers.EnemyController
+namespace Controllers.EnemyController
 {
     public class EnemyController 
     {
@@ -12,7 +13,6 @@ namespace Assets.Scripts.Controllers.EnemyController
         {
             _enemyParameters = enemyParameters;
             _enemyView = enemyView;
-            enemyType = enemyView.EnemyType;
         }        
     }
 }

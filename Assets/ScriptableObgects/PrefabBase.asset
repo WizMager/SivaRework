@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f1345f0d2801d4bb8680ea43338c6d, type: 3}
   m_Name: PrefabBase
   m_EditorClassIdentifier: 
-  _prefabBase:
+  prefabBase:
   - prefabBase: {fileID: 7538751601319544361, guid: 875b6b5b6a79cfe49ae4630ed1aab61d, type: 3}
     prefabName: Zombie

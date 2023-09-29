@@ -1,15 +1,14 @@
-﻿using Assets.Scripts.CharacterParameters.Interfaces;
-using System;
+﻿using System;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
+using CharacterParameters.Interfaces;
 using UnityEngine;
 
-namespace Assets.Scripts.CharacterParameters.UnitsParameters
+namespace CharacterParameters.UnitsParameters
 {
     [CreateAssetMenu(menuName = "Settings/PlayerParameters", fileName = "PlayerParameters")]
-    public class PlayerParametersBase : ScriptableObject, IPlayerParameters
+    public class PlayerParametersBase : ScriptableObject, IPlayerParametersBase
     {
         [SerializeField] private PlayerParameters[] playerParameters;
-
-        public PlayerParameters[] PlayerParameters => playerParameters;
       
         public PlayerParameters GetParametersByType(EPlayerType unitType)
         {

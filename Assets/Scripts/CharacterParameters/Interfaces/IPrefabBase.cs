@@ -1,9 +1,8 @@
-﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.CharacterParameters.Interfaces
 {
-    public interface IBaseParameters
+    public interface IPrefabBase
     {
         public GameObject GetPrefabBase(string prefabName);
     }

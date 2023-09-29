@@ -1,5 +1,6 @@
-﻿using Assets.Scripts.CharacterParameters.Interfaces;
-using System;
+﻿using System;
+using Assets.Scripts.CharacterParameters.Interfaces;
+using CharacterParameters.UnitsParameters;
 using UnityEngine;
 
 namespace Assets.Scripts.CharacterParameters.UnitsParameters
