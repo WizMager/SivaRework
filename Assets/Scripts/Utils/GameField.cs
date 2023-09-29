@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+using UnityEngine;
 
 namespace Utils
 {

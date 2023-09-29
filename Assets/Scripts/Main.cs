@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Factory.ConcreteFactory;
 using Controllers;
 using Controllers.MainController.Impl;
 using UniRx;
@@ -8,7 +9,8 @@ using Zenject;
 public class Main : MonoBehaviour
 {
     [Inject] private MainController _mainController;
-    
+    [Inject] private EnemyFactory _enemyFactory;
+            
     private void Awake()
     {
         _mainController.Awake();
@@ -17,6 +19,7 @@ public class Main : MonoBehaviour
     private void Start()
     {
         _mainController.Start();
+        _enemyFactory.CreateZombie();
     }
 
     private void Update()

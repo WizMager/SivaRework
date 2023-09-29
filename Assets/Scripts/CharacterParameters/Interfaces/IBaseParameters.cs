@@ -1,9 +1,10 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+using UnityEngine;
 
 namespace Assets.Scripts.CharacterParameters.Interfaces
 {
-    public interface IPlayerParameters
+    public interface IBaseParameters
     {
-        public PlayerParameters GetParametersByType(EPlayerType unitsType);
+        public GameObject GetPrefabBase(string prefabName);
     }
 }

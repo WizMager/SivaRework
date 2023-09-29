@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Assets.Scripts.CharacterParameters.Interfaces;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 using Controllers.InputController;
-using Controllers.Interfaces;
 using Services.GameFieldProvider;
 using UnityEngine;
+using Zenject;
 
 namespace Controllers.MoveController
 {
     public class MoveController
     {
         private readonly GameObject _player;
-
         private Camera _camera;
 
         private bool _isPressed;
@@ -34,7 +34,7 @@ namespace Controllers.MoveController
         private void OnRotateCamera(float value)
         {
             if (!_isPressed) return;
-            var y = Time.deltaTime * 5 * value;
+            var y = Time.deltaTime * 5 * value; 
             _camera.transform.RotateAround(_player.transform.position, Vector3.up, y);
         }
 

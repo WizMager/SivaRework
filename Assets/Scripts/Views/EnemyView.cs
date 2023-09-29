@@ -1,24 +1,25 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
 using CharacterParameters.Interfaces;
+using System;
 using UnityEngine;
 
-namespace Views
+namespace Assets.Scripts.Views
 {
-    public class PlayerView : MonoBehaviour, IDamagable
+    public class EnemyView : MonoBehaviour, IDamagable
     {
-        [SerializeField] private PlayerParametersBase playerParameters;
-        [SerializeField] private EPlayerType playerType;
+        [SerializeField] private EnemyParametersBase enemyParameters;
+        [SerializeField] private EEnemyType enemyType;
 
-        public EPlayerType PlayerType => playerType;
+        public EEnemyType EnemyType => enemyType;
 
         private void Start()
         {
-            foreach (var item in playerParameters.PlayerParameters)
+            foreach (var item in enemyParameters.EnemyParameters)
             {
                 for (int i = 0; i < 11; i++)
                 {
                     var p = item.parametersValue[i];
-                    Debug.Log($"Player {p.eParameters} = {p.Value}");
+                    Debug.Log($"Enemy {p.eParameters} = {p.Value}");
                 }
             }
         }

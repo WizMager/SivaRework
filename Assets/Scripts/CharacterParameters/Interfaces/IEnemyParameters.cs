@@ -2,8 +2,8 @@
 
 namespace Assets.Scripts.CharacterParameters.Interfaces
 {
-    public interface IPlayerParameters
+    public interface IEnemyParameters
     {
-        public PlayerParameters GetParametersByType(EPlayerType unitsType);
+        public EnemyParameters GetParametersByType(EEnemyType enemyType);
     }
 }

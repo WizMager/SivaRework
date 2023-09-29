@@ -1,18 +1,33 @@
-﻿using Assets.Scripts.CharacterParameters.Parameters;
+﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.Controllers.Parameters
+namespace Controllers.CharacteristicsController
 {
     public class ParametersController
     {
-        private Dictionary<int, Parameter> _parameters;
+        private Dictionary<EParameters, float> _parameters = new ();
 
-        public void ChangeParameter(int id, EParameters parameter, float value)
+        public ParametersController(PlayerParameters parameters)
         {
-            var parameters = _parameters[id];
+            foreach (var item in parameters.parametersValue)
+            {
+                _parameters.Add(item.eParameters, item.Value);
+            }
+        }
+        
+        public ParametersController(EnemyParameters parameters)
+        {
+            foreach (var item in parameters.parametersValue)
+            {
+                _parameters.Add(item.eParameters, item.Value);
+            }
+        }
 
-            parameters.SetParameter(parameter, value);
+        public void ChangeParameter(EParameters parameter, float value)
+        {
+            Parameters a = new();
+            a.SetParameter(parameter, value);
 
             switch (parameter)
             {
@@ -21,7 +36,7 @@ namespace Assets.Scripts.Controllers.Parameters
                 case EParameters.CritRate:
                     break;
                 case EParameters.Dexterity:
-                    parameters.SetParameter(EParameters.CritRate, value * 0.02f); // for example
+                    a.SetParameter(EParameters.CritRate, value * 0.02f); // for example
                     break;
                 case EParameters.EnergyRecovery:
                     break;

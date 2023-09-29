@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.CharacterParameters.Parameters
+﻿namespace Assets.Scripts.CharacterParameters.UnitsParameters
 {
     public enum EParameters
     {

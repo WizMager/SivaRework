@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Assets.Scripts.CharacterParameters.Parameters
+namespace Assets.Scripts.CharacterParameters.UnitsParameters
 {
-    public class Parameter
+    public class Parameters
     {
         private float _armor;
         private float _critRate;
@@ -16,7 +16,7 @@ namespace Assets.Scripts.CharacterParameters.Parameters
         private float _mana;
         private float _ultimateEnergy;
 
-        public float GetParameter(EParameters parameter) 
+        public float GetParameter(EParameters parameter)
         {
             switch (parameter)
             {
@@ -47,7 +47,7 @@ namespace Assets.Scripts.CharacterParameters.Parameters
             }
         }
 
-        public void SetParameter(EParameters parameter, float value) 
+        public void SetParameter(EParameters parameter, float value)
         {
             switch (parameter)
             {
@@ -87,6 +87,6 @@ namespace Assets.Scripts.CharacterParameters.Parameters
                 default:
                     throw new Exception("Not found parameters for SetParameters");
             }
-        }        
+        }
     }
 }
