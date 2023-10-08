@@ -2,6 +2,8 @@
 using Assets.Scripts.Factory;
 using CharacterParameters.UnitsParameters;
 using Controllers.EnemyController;
+using Controllers.MainController;
+using Services.GameFieldProvider;
 using UnityEngine;
 using Views;
 
@@ -11,13 +13,23 @@ namespace Factory.ConcreteFactory
     {
         private readonly IEnemyParameters _enemyParameters;
         private readonly IPrefabBase _prefabBase;
+        private readonly IMainController _mainController;
+        private readonly PlayerView _playerView;
 
         public EnemyFactory(
             IEnemyParameters enemyParameters,
-            IPrefabBase prefabBase)
+            IPrefabBase prefabBase,
+            IMainController mainController,
+            IGameFieldProvider gameFieldProvider
+        )
         {
             _enemyParameters = enemyParameters;
             _prefabBase = prefabBase;
+            _mainController = mainController;
+
+            var playerGameObject = gameFieldProvider.GameField.Player;
+            var playerView = playerGameObject.GetComponent<PlayerView>();
+            _playerView = playerView;
         }
 
         public override void CreateEnemy(EEnemyType enemyType)
@@ -44,7 +56,8 @@ namespace Factory.ConcreteFactory
 
             var enemyParameters = _enemyParameters.GetParametersByType(EEnemyType.Zombie);
 
-            new EnemyController(EEnemyType.Zombie, enemyParameters, enemyView);
+            var enemyController = new EnemyController(EEnemyType.Zombie, enemyParameters, enemyView, _playerView);
+            _mainController.AddController(enemyController);
         }
     }
 }

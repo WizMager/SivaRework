@@ -16,8 +16,8 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
-        _mainController.Start();
         _enemyFactory.CreateEnemy(EEnemyType.Zombie);
+        _mainController.Start();
     }
 
     private void Update()
