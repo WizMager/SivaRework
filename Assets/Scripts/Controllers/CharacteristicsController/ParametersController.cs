@@ -48,7 +48,9 @@ namespace Controllers.CharacteristicsController
                     break;
                 case EParameters.Wisdom:
                     break;
-                case EParameters.Health:
+                case EParameters.CurrentHealth:
+                    break;
+                case EParameters.MaxHealth:
                     break;
                 case EParameters.Mana:
                     break;

@@ -50,7 +50,7 @@ namespace Factory.ConcreteFactory
         {
             var prefab = _prefabBase.GetPrefabBase(EEnemyType.Zombie.ToString());
 
-            var enemy = Object.Instantiate(prefab, new Vector3(0,0,5), Quaternion.identity);
+            var enemy = Object.Instantiate(prefab, new Vector3(0, 0.5f, 5), Quaternion.identity);
 
             var enemyView = enemy.GetComponent<EnemyView>();
 

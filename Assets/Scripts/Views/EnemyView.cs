@@ -12,21 +12,9 @@ namespace Views
 
         public EEnemyType EnemyType => enemyType;
 
-        private void Start()
-        {
-            foreach (var item in enemyParameters.EnemyParameters)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    var p = item.parametersValue[i];
-                    Debug.Log($"Enemy {p.eParameters} = {p.Value}");
-                }
-            }
-        }
-
         public void ReceiveDamage(float damage)
         {
-            Debug.Log($"ReceiveDamage {damage}");
+            Debug.Log($"ReceiveDamage {damage} Enemy");
         }
     }
 }

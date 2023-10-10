@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SimpleAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""d327767d-0044-493b-831b-6d588db1e89f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""GetRotateCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6c6da12-052a-4518-aa12-eed07082aca5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SimpleAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_KeyboardAndMouse_Move = m_KeyboardAndMouse.FindAction("Move", throwIfNotFound: true);
         m_KeyboardAndMouse_RotateMouse = m_KeyboardAndMouse.FindAction("RotateMouse", throwIfNotFound: true);
         m_KeyboardAndMouse_GetRotateCamera = m_KeyboardAndMouse.FindAction("GetRotateCamera", throwIfNotFound: true);
+        m_KeyboardAndMouse_SimpleAttack = m_KeyboardAndMouse.FindAction("SimpleAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardAndMouse_Move;
     private readonly InputAction m_KeyboardAndMouse_RotateMouse;
     private readonly InputAction m_KeyboardAndMouse_GetRotateCamera;
+    private readonly InputAction m_KeyboardAndMouse_SimpleAttack;
     public struct KeyboardAndMouseActions
     {
         private @Controls m_Wrapper;
@@ -214,6 +236,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_KeyboardAndMouse_Move;
         public InputAction @RotateMouse => m_Wrapper.m_KeyboardAndMouse_RotateMouse;
         public InputAction @GetRotateCamera => m_Wrapper.m_KeyboardAndMouse_GetRotateCamera;
+        public InputAction @SimpleAttack => m_Wrapper.m_KeyboardAndMouse_SimpleAttack;
         public InputActionMap Get() { return m_Wrapper.m_KeyboardAndMouse; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +255,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @GetRotateCamera.started += instance.OnGetRotateCamera;
             @GetRotateCamera.performed += instance.OnGetRotateCamera;
             @GetRotateCamera.canceled += instance.OnGetRotateCamera;
+            @SimpleAttack.started += instance.OnSimpleAttack;
+            @SimpleAttack.performed += instance.OnSimpleAttack;
+            @SimpleAttack.canceled += instance.OnSimpleAttack;
         }
 
         private void UnregisterCallbacks(IKeyboardAndMouseActions instance)
@@ -245,6 +271,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @GetRotateCamera.started -= instance.OnGetRotateCamera;
             @GetRotateCamera.performed -= instance.OnGetRotateCamera;
             @GetRotateCamera.canceled -= instance.OnGetRotateCamera;
+            @SimpleAttack.started -= instance.OnSimpleAttack;
+            @SimpleAttack.performed -= instance.OnSimpleAttack;
+            @SimpleAttack.canceled -= instance.OnSimpleAttack;
         }
 
         public void RemoveCallbacks(IKeyboardAndMouseActions instance)
@@ -267,5 +296,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotateMouse(InputAction.CallbackContext context);
         void OnGetRotateCamera(InputAction.CallbackContext context);
+        void OnSimpleAttack(InputAction.CallbackContext context);
     }
 }

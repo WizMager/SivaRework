@@ -10,8 +10,9 @@
         Power = 5,
         MoveSpeed = 6,
         Wisdom = 7,
-        Health = 8,
-        Mana = 9,
-        UltimateEnergy = 10
+        CurrentHealth = 8,
+        MaxHealth = 9,
+        Mana = 10,
+        UltimateEnergy = 11
     }
 }

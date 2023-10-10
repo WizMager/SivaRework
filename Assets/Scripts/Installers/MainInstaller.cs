@@ -1,4 +1,5 @@
-﻿using Controllers.InputController.Impl;
+﻿using Assets.Scripts.Controllers.PlayerAttackController;
+using Controllers.InputController.Impl;
 using Controllers.MainController.Impl;
 using Controllers.MoveController;
 using Controllers.PlayerController;
@@ -23,7 +24,8 @@ namespace Installers
             var gameFieldProvider = new GameFieldProvider(gameField);
             Container.Bind<IGameFieldProvider>().FromInstance(gameFieldProvider).AsSingle();
 
-            Container.Bind<MoveController>().AsSingle();
+            Container.Instantiate<MoveController>();
+            Container.Instantiate<PlayerAttackController>();
             Container.Bind<PlayerController>().AsSingle();
             Container.Bind<EnemyFactory>().AsSingle();
         }

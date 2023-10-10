@@ -12,7 +12,7 @@ namespace Views
 
         public void ReceiveDamage(float damage)
         {
-            Debug.Log($"ReceiveDamage {damage}");
+            //Debug.Log($"ReceiveDamage {damage}");
         }
     }
 }

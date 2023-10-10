@@ -11,6 +11,7 @@ namespace Controllers.InputController.Impl
         public Action<Vector2> Move { get; set; }
         public Action<float> RotateMouse { get ; set; }
         public Action<bool> GetRotateCamera { get ; set ; }
+        public Action SimpleAttack { get; set ; }
 
         private readonly Controls _controls = new ();
         
@@ -25,6 +26,7 @@ namespace Controllers.InputController.Impl
         {
             var keyboardAndMouse = _controls.KeyboardAndMouse;
             var isPressed = keyboardAndMouse.GetRotateCamera.inProgress;
+            var isPressedAttack = keyboardAndMouse.SimpleAttack.inProgress;
 
             if (!isPressed) { }
             else if (isPressed == Input.GetKeyDown(KeyCode.Space))
@@ -42,6 +44,12 @@ namespace Controllers.InputController.Impl
             {
                 var movementInput = keyboardAndMouse.Move.ReadValue<Vector2>();
                 Move?.Invoke(movementInput); 
+            }
+
+            if (!isPressedAttack) { }
+            else if (isPressedAttack == Input.GetMouseButtonDown(0))
+            {
+                SimpleAttack?.Invoke();
             }
         }        
     }

@@ -10,5 +10,7 @@ namespace Controllers.InputController
         Action<float> RotateMouse { get; set; }
 
         Action<bool> GetRotateCamera { get; set; }
+
+        Action SimpleAttack { get; set; }
     }
 }

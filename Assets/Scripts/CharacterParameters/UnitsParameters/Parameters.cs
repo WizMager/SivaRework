@@ -12,7 +12,8 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
         private float _power;
         private float _moveSpeed;
         private float _wisdom;
-        private float _health;
+        private float _currentHealth;
+        private float _maxHealth;
         private float _mana;
         private float _ultimateEnergy;
 
@@ -36,8 +37,10 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
                     return _moveSpeed;
                 case EParameters.Wisdom:
                     return _wisdom;
-                case EParameters.Health:
-                    return _health;
+                case EParameters.CurrentHealth:
+                    return _currentHealth;
+                case EParameters.MaxHealth:
+                    return _maxHealth;
                 case EParameters.Mana:
                     return _mana;
                 case EParameters.UltimateEnergy:
@@ -75,8 +78,11 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
                 case EParameters.Wisdom:
                     _wisdom += value;
                     break;
-                case EParameters.Health:
-                    _health += value;
+                case EParameters.CurrentHealth:
+                    _currentHealth += value;
+                    break;
+                case EParameters.MaxHealth:
+                    _maxHealth += value;
                     break;
                 case EParameters.Mana:
                     _mana += value;
