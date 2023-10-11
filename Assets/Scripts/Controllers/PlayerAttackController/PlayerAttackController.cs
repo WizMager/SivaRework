@@ -11,7 +11,6 @@ namespace Assets.Scripts.Controllers.PlayerAttackController
         private readonly PlayerAttackView _attackView;
 
         private bool _attackAwailable = true;
-        private float _attackCooldown;
 
         public PlayerAttackController(
             IGameFieldProvider gameFieldProvider,
@@ -35,7 +34,7 @@ namespace Assets.Scripts.Controllers.PlayerAttackController
 
         private IEnumerator AttackCooldown()
         {
-            yield return new WaitForSeconds(_attackCooldown);
+            yield return new WaitForSeconds(_attackView.AttackCooldown);
             _attackAwailable = true;
         }
 

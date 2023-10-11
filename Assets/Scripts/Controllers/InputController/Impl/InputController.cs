@@ -1,12 +1,11 @@
-﻿using System;
-using Controllers.Interfaces;
+﻿using Controllers.Interfaces;
 using Controllers.MainController;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Controllers.InputController.Impl
 {
-    public class InputController : IInputController, IUpdate
+    public class InputController : IInputController, IStart
     {
         public Action<Vector2> Move { get; set; }
         public Action<float> RotateMouse { get ; set; }
@@ -14,43 +13,25 @@ namespace Controllers.InputController.Impl
         public Action SimpleAttack { get; set ; }
 
         private readonly Controls _controls = new ();
-        
+                
         public InputController(IMainController mainController)
         {
             mainController.AddController(this);
             
             _controls.Enable();
         }
-        
-        public void OnUpdate()
+
+        public void OnStart()
         {
-            var keyboardAndMouse = _controls.KeyboardAndMouse;
-            var isPressed = keyboardAndMouse.GetRotateCamera.inProgress;
-            var isPressedAttack = keyboardAndMouse.SimpleAttack.inProgress;
+            _controls.KeyboardAndMouse.SimpleAttack.performed += context => SimpleAttack.Invoke();
 
-            if (!isPressed) { }
-            else if (isPressed == Input.GetKeyDown(KeyCode.Space))
-            {
-                GetRotateCamera?.Invoke(isPressed);
-            }
+            _controls.KeyboardAndMouse.GetRotateCamera.performed += context => GetRotateCamera.Invoke(true);
+            _controls.KeyboardAndMouse.GetRotateCamera.canceled += context => GetRotateCamera.Invoke(false);
 
-            if (isPressed)
-            {
-                var rotateCamera = keyboardAndMouse.RotateMouse.ReadValue<float>();
-                RotateMouse?.Invoke(rotateCamera);
-            }
+            _controls.KeyboardAndMouse.RotateMouse.performed += context => RotateMouse.Invoke(context.ReadValue<float>());
 
-            if (keyboardAndMouse.Move.phase == InputActionPhase.Started)
-            {
-                var movementInput = keyboardAndMouse.Move.ReadValue<Vector2>();
-                Move?.Invoke(movementInput); 
-            }
-
-            if (!isPressedAttack) { }
-            else if (isPressedAttack == Input.GetMouseButtonDown(0))
-            {
-                SimpleAttack?.Invoke();
-            }
-        }        
+            _controls.KeyboardAndMouse.Move.performed += context => Move.Invoke(context.ReadValue<Vector2>());
+            _controls.KeyboardAndMouse.Move.canceled += context => Move.Invoke(context.ReadValue<Vector2>());
+        }
     }
 }

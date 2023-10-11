@@ -1,9 +1,6 @@
-﻿using Assets.Scripts.CharacterParameters.Interfaces;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
-using Controllers.InputController;
+﻿using Controllers.InputController;
 using Services.GameFieldProvider;
 using UnityEngine;
-using Zenject;
 
 namespace Controllers.MoveController
 {

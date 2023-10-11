@@ -8,6 +8,8 @@ namespace Assets.Scripts.Controllers.PlayerAttackController
         [SerializeField] private Collider hitCollider;
         [SerializeField] private float attackCooldown = 1;
 
+        public float AttackCooldown => attackCooldown;
+
         public void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out EnemyView enemy))

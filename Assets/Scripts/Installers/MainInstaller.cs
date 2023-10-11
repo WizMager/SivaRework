@@ -24,10 +24,10 @@ namespace Installers
             var gameFieldProvider = new GameFieldProvider(gameField);
             Container.Bind<IGameFieldProvider>().FromInstance(gameFieldProvider).AsSingle();
 
+            Container.Bind<EnemyFactory>().AsSingle();
+            Container.Bind<PlayerController>().AsSingle();
             Container.Instantiate<MoveController>();
             Container.Instantiate<PlayerAttackController>();
-            Container.Bind<PlayerController>().AsSingle();
-            Container.Bind<EnemyFactory>().AsSingle();
         }
     }
 }

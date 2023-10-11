@@ -6,7 +6,7 @@ namespace Controllers.CharacteristicsController
 {
     public class ParametersController
     {
-        private Dictionary<EParameters, float> _parameters = new ();
+        private Dictionary<EParameters, float> _parameters = new();
 
         public ParametersController(PlayerParameters parameters)
         {
@@ -15,7 +15,7 @@ namespace Controllers.CharacteristicsController
                 _parameters.Add(item.eParameters, item.Value);
             }
         }
-        
+
         public ParametersController(EnemyParameters parameters)
         {
             foreach (var item in parameters.parametersValue)
