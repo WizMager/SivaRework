@@ -36,4 +36,15 @@ MonoBehaviour:
       Value: 0
     - eParameters: 0
       Value: 0
+    insideParametersValues:
+    - eParametersAiBTree: 0
+      Value: 2
+    - eParametersAiBTree: 1
+      Value: 10
+    - eParametersAiBTree: 2
+      Value: 5
+    - eParametersAiBTree: 3
+      Value: 2
+    - eParametersAiBTree: 4
+      Value: 3
     enemyType: 0

@@ -25,10 +25,7 @@ namespace Controllers.CharacteristicsController
         }
 
         public void ChangeParameter(EParameters parameter, float value)
-        {
-            Parameters a = new();
-            a.SetParameter(parameter, value);
-
+        {            
             switch (parameter)
             {
                 case EParameters.Armor:
@@ -36,7 +33,7 @@ namespace Controllers.CharacteristicsController
                 case EParameters.CritRate:
                     break;
                 case EParameters.Dexterity:
-                    a.SetParameter(EParameters.CritRate, value * 0.02f); // for example
+                    //parameters.SetParameter(EParameters.CritRate, value * 0.02f); // for example
                     break;
                 case EParameters.EnergyRecovery:
                     break;

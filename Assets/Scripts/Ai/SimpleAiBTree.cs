@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Ai;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 using BehaviorTree;
+using System.Collections.Generic;
 using UnityEngine;
 using Views;
 using Tree = BehaviorTree.Tree;
@@ -8,29 +10,27 @@ namespace Ai
 {
     public class SimpleAiBTree : Tree
     {
-        private float _followSpeed;
+        private float _followSpeed; // miltiplied whis normal enemy speed
         private float _maxFollowDistance;
         private float _attackDistance;
         private float _damage;
         private float _attackCooldown;
         private readonly Transform _ownerTransform;
         private readonly PlayerView _playerView;
+        private readonly AiBTreeParameters _aiBTreeParameters;
 
         public SimpleAiBTree(
-            float followSpeed, 
-            float maxFollowDistance, 
-            float attackDistance, 
-            float damage, 
-            float attackCooldown, 
+            //EnemyParameters enemyParameters,
             Transform ownerTransform, 
             PlayerView playerView
         )
         {
-            _followSpeed = followSpeed;
-            _maxFollowDistance = maxFollowDistance;
-            _attackDistance = attackDistance;
-            _damage = damage;
-            _attackCooldown = attackCooldown;
+            _followSpeed = _aiBTreeParameters.FollowSpeed;
+            _maxFollowDistance = _aiBTreeParameters.MaxFollowDistance;
+            _attackDistance = _aiBTreeParameters.AttackDistance;
+            _damage = _aiBTreeParameters.Damage;
+            _attackCooldown = _aiBTreeParameters.AttackCooldown;
+
             _ownerTransform = ownerTransform;
             _playerView = playerView;
         }

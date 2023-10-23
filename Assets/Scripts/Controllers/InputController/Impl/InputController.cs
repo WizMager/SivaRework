@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Controllers.InputController.Impl
 {
-    public class InputController : IInputController, IStart
+    public class InputController : IInputController, IStart, IUpdate
     {
         public Action<Vector2> Move { get; set; }
         public Action<float> RotateMouse { get ; set; }
@@ -29,9 +29,17 @@ namespace Controllers.InputController.Impl
             _controls.KeyboardAndMouse.GetRotateCamera.canceled += context => GetRotateCamera.Invoke(false);
 
             _controls.KeyboardAndMouse.RotateMouse.performed += context => RotateMouse.Invoke(context.ReadValue<float>());
+        }
 
-            _controls.KeyboardAndMouse.Move.performed += context => Move.Invoke(context.ReadValue<Vector2>());
-            _controls.KeyboardAndMouse.Move.canceled += context => Move.Invoke(context.ReadValue<Vector2>());
+        public void OnUpdate()
+        {
+            var keyboardAndMouse = _controls.KeyboardAndMouse.Move;
+
+            if (keyboardAndMouse.inProgress)
+            {
+                var movementInput = keyboardAndMouse.ReadValue<Vector2>();
+                Move?.Invoke(movementInput);
+            }
         }
     }
 }

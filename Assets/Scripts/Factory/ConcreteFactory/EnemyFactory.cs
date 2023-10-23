@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.CharacterParameters.Interfaces;
+﻿using Assets.Scripts.Ai;
+using Assets.Scripts.CharacterParameters.Interfaces;
 using Assets.Scripts.Factory;
 using CharacterParameters.UnitsParameters;
 using Controllers.EnemyController;

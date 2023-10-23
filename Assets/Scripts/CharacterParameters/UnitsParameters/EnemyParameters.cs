@@ -1,5 +1,5 @@
-﻿using System;
-using CharacterParameters.UnitsParameters;
+﻿using CharacterParameters.UnitsParameters;
+using System;
 
 namespace Assets.Scripts.CharacterParameters.UnitsParameters
 {
@@ -7,6 +7,7 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
     public class EnemyParameters
     {
         public ParametersValue[] parametersValue;
+        public AiBTreeParametersValue[] aiBTreeParametersValues;
         public EEnemyType enemyType;
     }
 }

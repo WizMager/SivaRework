@@ -1,4 +1,5 @@
 ﻿using Ai;
+using Assets.Scripts.Ai;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
 using CharacterParameters.UnitsParameters;
 using Controllers.Interfaces;
@@ -19,7 +20,7 @@ namespace Controllers.EnemyController
 
             //TODO: need use enemy parameters from class and subscribe on change its. If change some params just invoke
             //action with all list of parameters but maybe will be other variant
-            _simpleAiBTree = new SimpleAiBTree(2, 10, 1, 5, 1.5f, _enemyView.transform, playerView);
+            _simpleAiBTree = new SimpleAiBTree(/*enemyParameters,*/ _enemyView.transform, playerView);
         }
 
         public void OnStart()

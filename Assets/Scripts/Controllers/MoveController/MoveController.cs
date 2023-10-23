@@ -37,9 +37,10 @@ namespace Controllers.MoveController
 
         private void OnMove(Vector2 moveDirection)
         {
+            var deltaTime = Time.deltaTime;
             var newPosition = _player.transform.position;
-            newPosition.x += moveDirection.x;
-            newPosition.z += moveDirection.y;
+            newPosition.x += moveDirection.x * deltaTime * 5;
+            newPosition.z += moveDirection.y * deltaTime * 5;
             _player.transform.position = newPosition;
         }
     }
