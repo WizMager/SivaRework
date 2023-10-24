@@ -1,5 +1,4 @@
 ﻿using Ai;
-using Assets.Scripts.Ai;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
 using CharacterParameters.UnitsParameters;
 using Controllers.Interfaces;
@@ -9,18 +8,16 @@ namespace Controllers.EnemyController
 {
     public class EnemyController : IStart, IUpdate 
     {
-        private readonly EnemyParameters _enemyParameters;
         private readonly EnemyView _enemyView;
         private readonly SimpleAiBTree _simpleAiBTree;
 
         public EnemyController(EEnemyType enemyType, EnemyParameters enemyParameters, EnemyView enemyView, PlayerView playerView)
         {
-            _enemyParameters = enemyParameters;
+            //TODO: create EnemyParametersController(or ZombieParametersController), use EnemyParameters in it
             _enemyView = enemyView;
 
-            //TODO: need use enemy parameters from class and subscribe on change its. If change some params just invoke
-            //action with all list of parameters but maybe will be other variant
-            _simpleAiBTree = new SimpleAiBTree(/*enemyParameters,*/ _enemyView.transform, playerView);
+            //TODO: push EnemyParametersController in SimpleAiBTree. BTree must not have field just have links on parameters. All parameters only in single controller
+            _simpleAiBTree = new SimpleAiBTree(/*IEnemyParametersController,*/ _enemyView.transform, playerView);
         }
 
         public void OnStart()
