@@ -18,33 +18,29 @@ MonoBehaviour:
       Value: 0
     - eParameters: 1
       Value: 1
-    - eParameters: 0
+    - eParameters: 2
       Value: 0
-    - eParameters: 0
+    - eParameters: 3
       Value: 0
-    - eParameters: 0
+    - eParameters: 4
       Value: 0
-    - eParameters: 0
+    - eParameters: 5
       Value: 0
-    - eParameters: 0
+    - eParameters: 6
       Value: 0
-    - eParameters: 0
+    - eParameters: 7
       Value: 0
-    - eParameters: 0
+    - eParameters: 8
       Value: 0
-    - eParameters: 0
+    - eParameters: 9
       Value: 0
-    - eParameters: 0
+    - eParameters: 10
       Value: 0
-    insideParametersValues:
+    - eParameters: 11
+      Value: 0
+    aiBTreeParametersValues:
     - eParametersAiBTree: 0
       Value: 2
     - eParametersAiBTree: 1
-      Value: 10
-    - eParametersAiBTree: 2
-      Value: 5
-    - eParametersAiBTree: 3
-      Value: 2
-    - eParametersAiBTree: 4
-      Value: 3
+      Value: 1
     enemyType: 0

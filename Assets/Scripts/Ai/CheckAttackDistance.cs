@@ -10,7 +10,7 @@ namespace Ai
         private readonly Transform _target;
 
         public CheckAttackDistance(
-            float attackDistance, 
+            ref float attackDistance, 
             Transform owner, 
             Transform target
         )

@@ -3,6 +3,7 @@
     public enum EAiBTreeParameters
     {
         MaxFollowDistance,
-        AttackDistance
+        AttackDistance,
+        None
     }
 }

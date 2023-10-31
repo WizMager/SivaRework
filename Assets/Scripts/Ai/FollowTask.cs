@@ -12,7 +12,7 @@ namespace Ai
         public FollowTask(
             Transform ownerTransform, 
             Transform targetTransform, 
-            float followSpeed
+            ref float followSpeed
         )
         {
             _ownerTransform = ownerTransform;

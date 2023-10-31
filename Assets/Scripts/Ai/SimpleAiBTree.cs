@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Ai;
+using Assets.Scripts.CharacterParameters.Interfaces;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 using BehaviorTree;
 using UnityEngine;
 using Views;
@@ -9,27 +11,17 @@ namespace Ai
 {
     public class SimpleAiBTree : Tree
     {
-        private float _followSpeed; //delete this
-        private float _maxFollowDistance; //delete this
-        private float _attackDistance; //delete this
-        private float _damage; //delete this
-        private float _attackCooldown; //delete this
         private readonly Transform _ownerTransform;
         private readonly PlayerView _playerView;
-        private readonly AiBTreeParameters _aiBTreeParameters;
+        private readonly IEnemyParametersController _enemyParametersController;
 
         public SimpleAiBTree(
-            //IEnemyParameters enemyParametersController,
+            IEnemyParametersController enemyParametersController,
             Transform ownerTransform, 
             PlayerView playerView
         )
         {
-            //_followSpeed = _aiBTreeParameters.FollowSpeed;
-            //_maxFollowDistance = _aiBTreeParameters.MaxFollowDistance;
-            //_attackDistance = _aiBTreeParameters.AttackDistance;
-            //_damage = _aiBTreeParameters.Damage;
-            //_attackCooldown = _aiBTreeParameters.AttackCooldown;
-
+            _enemyParametersController = enemyParametersController;
             _ownerTransform = ownerTransform;
             _playerView = playerView;
         }
@@ -42,14 +34,18 @@ namespace Ai
             {
                 new Sequence(new List<Node>
                 {
-                    //TODO: need link on variable or subscribe on change parameter, or just give IEnemyParametersController and take need parameter by type
-                    new CheckFollowDistance(_ownerTransform, playerTransform, _maxFollowDistance, _attackDistance),
-                    new FollowTask(_ownerTransform, playerTransform, _followSpeed)
+                    new CheckFollowDistance(_ownerTransform, playerTransform,
+                    ref _enemyParametersController.GetParametersRefAi(EAiBTreeParameters.MaxFollowDistance),
+                    ref _enemyParametersController.GetParametersRefAi(EAiBTreeParameters.AttackDistance)),
+                    new FollowTask(_ownerTransform, playerTransform,
+                    ref _enemyParametersController.GetParametersRef(EParameters.MoveSpeed))
                 }),
                 new Sequence(new List<Node>
                 {
-                    new CheckAttackDistance(_attackDistance, _ownerTransform, playerTransform),
-                    new AttackTargetTask(_playerView, _damage, _attackCooldown)
+                    new CheckAttackDistance(ref _enemyParametersController.GetParametersRefAi(EAiBTreeParameters.AttackDistance), _ownerTransform, playerTransform),
+                    new AttackTargetTask(_playerView,
+                    ref _enemyParametersController.GetParametersRef(EParameters.Power),
+                    ref _enemyParametersController.GetParametersRef(EParameters.Dexterity))
                 })
             });
         }

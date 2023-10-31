@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Ai;
+using System;
 
 namespace Assets.Scripts.CharacterParameters.UnitsParameters
 {
@@ -16,6 +17,68 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
         private float _maxHealth;
         private float _mana;
         private float _ultimateEnergy;
+
+        private float _maxFollowDistance;
+        private float _attackDistance;
+
+        public ref float GetParametersRef(EParameters eParameters)
+        {
+            switch (eParameters)
+            {
+                case EParameters.Armor:
+                    return ref _armor;
+                case EParameters.CritRate:
+                    return ref _critRate;
+                case EParameters.Dexterity:
+                    return ref _dexterity;
+                case EParameters.EnergyRecovery:
+                    return ref _energyRecovery;
+                case EParameters.HealthRecovery:
+                    return ref _healthRecovery;
+                case EParameters.Power:
+                    return ref _power;
+                case EParameters.MoveSpeed:
+                    return ref _moveSpeed;
+                case EParameters.Wisdom:
+                    return ref _wisdom;
+                case EParameters.CurrentHealth:
+                    return ref _currentHealth;
+                case EParameters.MaxHealth:
+                    return ref _maxHealth;
+                case EParameters.Mana:
+                    return ref _mana;
+                case EParameters.UltimateEnergy:
+                    return ref _ultimateEnergy;
+                default:
+                    throw new Exception("Parameter not found");
+            }
+        }
+
+        public ref float GetParametersRefAi(EAiBTreeParameters eAiBTreeParameters)
+        {
+            switch (eAiBTreeParameters)
+            {
+                case EAiBTreeParameters.MaxFollowDistance:
+                    return ref _maxFollowDistance;
+                case EAiBTreeParameters.AttackDistance:
+                    return ref _attackDistance;
+                default: 
+                    throw new Exception("Parameter not found");
+            }
+        }
+
+        public float GetEnemyParameter(EAiBTreeParameters eAiBTreeParameters)
+        {
+            switch (eAiBTreeParameters)
+            {
+                case EAiBTreeParameters.MaxFollowDistance:
+                    return _maxFollowDistance;
+                case EAiBTreeParameters.AttackDistance:
+                    return _attackDistance;
+                default:
+                    throw new Exception("Parameter not found");
+            }
+        }
 
         public float GetParameter(EParameters parameter)
         {

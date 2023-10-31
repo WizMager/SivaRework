@@ -13,8 +13,8 @@ namespace Ai
         public CheckFollowDistance(
             Transform ownerTransform, 
             Transform targetTransform, 
-            float followMaxDistance, 
-            float attackDistance
+             ref float followMaxDistance, 
+             ref float attackDistance
         )
         {
             _ownerTransform = ownerTransform;

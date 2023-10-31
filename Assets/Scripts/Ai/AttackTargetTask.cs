@@ -14,8 +14,8 @@ namespace Ai
 
         public AttackTargetTask(
             IDamagable target, 
-            float damage, 
-            float attackCooldown
+            ref float damage, 
+            ref float attackCooldown
         )
         {
             _target = target;

@@ -13,6 +13,7 @@
         CurrentHealth = 8,
         MaxHealth = 9,
         Mana = 10,
-        UltimateEnergy = 11
+        UltimateEnergy = 11,
+        None = 12
     }
 }
