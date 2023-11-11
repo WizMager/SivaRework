@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.Ai;
-using System;
+﻿using System;
+using Assets.Scripts.Ai;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 
-namespace Assets.Scripts.CharacterParameters.UnitsParameters
+namespace CharacterParameters.UnitsParameters
 {
     public class Parameters
     {
@@ -21,6 +22,73 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
         private float _maxFollowDistance;
         private float _attackDistance;
 
+        public Parameters(EnemyParameters enemyParameters)
+        {
+            foreach (var parameter in enemyParameters.parametersValue)
+            {
+                switch (parameter.eParameters)
+                {
+                    case EParameters.Armor:
+                        _armor = parameter.value;
+                        break;
+                    case EParameters.CritRate:
+                        _critRate = parameter.value;
+                        break;
+                    case EParameters.Dexterity:
+                        _dexterity = parameter.value;
+                        break;
+                    case EParameters.EnergyRecovery:
+                        _energyRecovery = parameter.value;
+                        break;
+                    case EParameters.HealthRecovery:
+                        _healthRecovery = parameter.value;
+                        break;
+                    case EParameters.Power:
+                        _power = parameter.value;
+                        break;
+                    case EParameters.MoveSpeed:
+                        _moveSpeed = parameter.value;
+                        break;
+                    case EParameters.Wisdom:
+                        _wisdom = parameter.value;
+                        break;
+                    case EParameters.CurrentHealth:
+                        _currentHealth = parameter.value;
+                        break;
+                    case EParameters.MaxHealth:
+                        _maxHealth = parameter.value;
+                        break;
+                    case EParameters.Mana:
+                        _mana = parameter.value;
+                        break;
+                    case EParameters.UltimateEnergy:
+                        _ultimateEnergy = parameter.value;
+                        break;
+                    case EParameters.None:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            foreach (var treeParametersValue in enemyParameters.aiBTreeParametersValues)
+            {
+                switch (treeParametersValue.eParametersAiBTree)
+                {
+                    case EAiBTreeParameters.MaxFollowDistance:
+                        _maxFollowDistance = treeParametersValue.Value;
+                        break;
+                    case EAiBTreeParameters.AttackDistance:
+                        _attackDistance = treeParametersValue.Value;
+                        break;
+                    case EAiBTreeParameters.None:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        
         public ref float GetParametersRef(EParameters eParameters)
         {
             switch (eParameters)

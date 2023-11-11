@@ -1,22 +1,19 @@
-﻿using Assets.Scripts.CharacterParameters.Interfaces;
+﻿using System;
+using Assets.Scripts.Ai;
+using Assets.Scripts.CharacterParameters.Interfaces;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
+using CharacterParameters.UnitsParameters;
 using Controllers.CharacteristicsController;
-using System;
-using System.Collections.Generic;
 
-namespace Assets.Scripts.Ai
+namespace Ai
 {
     public class EnemyParametersController : ParametersController, IEnemyParametersController
     {
-        private Dictionary<EAiBTreeParameters, float> _aiBTreeParameters = new();
-        private Parameters _parameters;
+        private readonly Parameters _parameters;
 
-        public EnemyParametersController(EnemyParameters enemyParameters) : base(enemyParameters) 
+        public EnemyParametersController(EnemyParameters enemyParameters) : base(enemyParameters)
         {
-            foreach (var item in enemyParameters.aiBTreeParametersValues)
-            {
-                _aiBTreeParameters.Add(item.eParametersAiBTree, item.Value);
-            }
+            _parameters = new Parameters(enemyParameters);
         }
 
         public ref float GetParametersRef(EParameters eParameters)

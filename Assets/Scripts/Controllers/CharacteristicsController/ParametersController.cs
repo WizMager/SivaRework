@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
+using CharacterParameters.UnitsParameters;
 
 namespace Controllers.CharacteristicsController
 {
     public class ParametersController
     {
-        private Dictionary<EParameters, float> _parameters = new();
+        private Dictionary<EParameters, float> _parameters = new();//TODO: rework like in EnemyParametersCintroller
 
         public ParametersController(PlayerParameters parameters)
         {
             foreach (var item in parameters.parametersValue)
             {
-                _parameters.Add(item.eParameters, item.Value);
+                _parameters.Add(item.eParameters, item.value);
             }
         }
 
@@ -20,7 +21,7 @@ namespace Controllers.CharacteristicsController
         {
             foreach (var item in parameters.parametersValue)
             {
-                _parameters.Add(item.eParameters, item.Value);
+                _parameters.Add(item.eParameters, item.value);
             }
         }
 

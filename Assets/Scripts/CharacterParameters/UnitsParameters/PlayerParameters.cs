@@ -1,6 +1,7 @@
 ﻿using System;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 
-namespace Assets.Scripts.CharacterParameters.UnitsParameters
+namespace CharacterParameters.UnitsParameters
 {
     [Serializable]
     public class PlayerParameters

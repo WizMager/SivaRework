@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+using CharacterParameters.UnitsParameters;
 
 namespace CharacterParameters.Interfaces
 {
