@@ -15,7 +15,7 @@ namespace Controllers.PlayerController
 
             var parameters = playerParameters.GetParametersByType(player.PlayerType);
 
-            _parametersController = new ParametersController(parameters);
+            _parametersController = new ParametersController(parameters.parametersValue);
         }
     }
 }

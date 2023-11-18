@@ -13,10 +13,10 @@ namespace Ai
     {
         private readonly Transform _ownerTransform;
         private readonly PlayerView _playerView;
-        private readonly IEnemyParametersController _enemyParametersController;
+        private readonly EnemyParametersController _enemyParametersController;
 
         public SimpleAiBTree(
-            IEnemyParametersController enemyParametersController,
+            EnemyParametersController enemyParametersController,
             Transform ownerTransform, 
             PlayerView playerView
         )

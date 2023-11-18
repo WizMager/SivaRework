@@ -1,6 +1,5 @@
-﻿using System;
-using Assets.Scripts.Ai;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
+﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
+using System;
 
 namespace CharacterParameters.UnitsParameters
 {
@@ -19,12 +18,9 @@ namespace CharacterParameters.UnitsParameters
         private float _mana;
         private float _ultimateEnergy;
 
-        private float _maxFollowDistance;
-        private float _attackDistance;
-
-        public Parameters(EnemyParameters enemyParameters)
+        public Parameters(ParametersValue[] parameters)
         {
-            foreach (var parameter in enemyParameters.parametersValue)
+            foreach (var parameter in parameters)
             {
                 switch (parameter.eParameters)
                 {
@@ -70,25 +66,8 @@ namespace CharacterParameters.UnitsParameters
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }        
 
-            foreach (var treeParametersValue in enemyParameters.aiBTreeParametersValues)
-            {
-                switch (treeParametersValue.eParametersAiBTree)
-                {
-                    case EAiBTreeParameters.MaxFollowDistance:
-                        _maxFollowDistance = treeParametersValue.Value;
-                        break;
-                    case EAiBTreeParameters.AttackDistance:
-                        _attackDistance = treeParametersValue.Value;
-                        break;
-                    case EAiBTreeParameters.None:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-        
         public ref float GetParametersRef(EParameters eParameters)
         {
             switch (eParameters)
@@ -117,32 +96,6 @@ namespace CharacterParameters.UnitsParameters
                     return ref _mana;
                 case EParameters.UltimateEnergy:
                     return ref _ultimateEnergy;
-                default:
-                    throw new Exception("Parameter not found");
-            }
-        }
-
-        public ref float GetParametersRefAi(EAiBTreeParameters eAiBTreeParameters)
-        {
-            switch (eAiBTreeParameters)
-            {
-                case EAiBTreeParameters.MaxFollowDistance:
-                    return ref _maxFollowDistance;
-                case EAiBTreeParameters.AttackDistance:
-                    return ref _attackDistance;
-                default: 
-                    throw new Exception("Parameter not found");
-            }
-        }
-
-        public float GetEnemyParameter(EAiBTreeParameters eAiBTreeParameters)
-        {
-            switch (eAiBTreeParameters)
-            {
-                case EAiBTreeParameters.MaxFollowDistance:
-                    return _maxFollowDistance;
-                case EAiBTreeParameters.AttackDistance:
-                    return _attackDistance;
                 default:
                     throw new Exception("Parameter not found");
             }

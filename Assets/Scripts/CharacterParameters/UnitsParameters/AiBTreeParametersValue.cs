@@ -7,6 +7,6 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
     public class AiBTreeParametersValue
     {
         public EAiBTreeParameters eParametersAiBTree;
-        public float Value;
+        public float value;
     }
 }

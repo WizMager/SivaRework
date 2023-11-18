@@ -1,27 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
+﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
 using CharacterParameters.UnitsParameters;
+using System;
 
 namespace Controllers.CharacteristicsController
 {
     public class ParametersController
     {
-        private Dictionary<EParameters, float> _parameters = new();//TODO: rework like in EnemyParametersCintroller
+        private readonly Parameters _parameters;
 
-        public ParametersController(PlayerParameters parameters)
+        public ParametersController(ParametersValue[] parameters)
         {
-            foreach (var item in parameters.parametersValue)
-            {
-                _parameters.Add(item.eParameters, item.value);
-            }
+            _parameters = new Parameters(parameters);
         }
 
-        public ParametersController(EnemyParameters parameters)
+        public ref float GetParametersRef(EParameters eParameters)
         {
-            foreach (var item in parameters.parametersValue)
+            return ref _parameters.GetParametersRef(eParameters);
+        }
+
+        public float GetParameter(EParameters parameter)
+        {
+            switch (parameter)
             {
-                _parameters.Add(item.eParameters, item.value);
+                case EParameters.Armor:
+                    var armor = _parameters.GetParameter(EParameters.Armor);
+                    return armor;
+                case EParameters.CritRate:
+                    var critRate = _parameters.GetParameter(EParameters.CritRate);
+                    return critRate;
+                case EParameters.Dexterity:
+                    var dexterity = _parameters.GetParameter(EParameters.Dexterity);
+                    return dexterity;
+                case EParameters.EnergyRecovery:
+                    var energyRecovery = _parameters.GetParameter(EParameters.EnergyRecovery);
+                    return energyRecovery;
+                case EParameters.HealthRecovery:
+                    var healthRecovery = _parameters.GetParameter(EParameters.HealthRecovery);
+                    return healthRecovery;
+                case EParameters.Power:
+                    var power = _parameters.GetParameter(EParameters.Power);
+                    return power;
+                case EParameters.MoveSpeed:
+                    var moveSpeed = _parameters.GetParameter(EParameters.MoveSpeed);
+                    return moveSpeed;
+                case EParameters.Wisdom:
+                    var wisdom = _parameters.GetParameter(EParameters.Wisdom);
+                    return wisdom;
+                case EParameters.CurrentHealth:
+                    var currentHealth = _parameters.GetParameter(EParameters.CurrentHealth);
+                    return currentHealth;
+                case EParameters.MaxHealth:
+                    var maxHealth = _parameters.GetParameter(EParameters.MaxHealth);
+                    return maxHealth;
+                case EParameters.Mana:
+                    var mana = _parameters.GetParameter(EParameters.Mana);
+                    return mana;
+                case EParameters.UltimateEnergy:
+                    var ultimateEnergy = _parameters.GetParameter(EParameters.UltimateEnergy);
+                    return ultimateEnergy;
+                default:
+                    throw new Exception("Parameter not found");
             }
         }
 

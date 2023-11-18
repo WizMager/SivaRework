@@ -15,32 +15,32 @@ MonoBehaviour:
   enemyParameters:
   - parametersValue:
     - eParameters: 0
-      Value: 0
+      value: 1
     - eParameters: 1
-      Value: 1
+      value: 1
     - eParameters: 2
-      Value: 0
+      value: 1
     - eParameters: 3
-      Value: 0
+      value: 1
     - eParameters: 4
-      Value: 0
+      value: 1
     - eParameters: 5
-      Value: 0
+      value: 1
     - eParameters: 6
-      Value: 0
+      value: 1
     - eParameters: 7
-      Value: 0
+      value: 1
     - eParameters: 8
-      Value: 0
+      value: 2
     - eParameters: 9
-      Value: 0
+      value: 1
     - eParameters: 10
-      Value: 0
+      value: 1
     - eParameters: 11
-      Value: 0
+      value: 1
     aiBTreeParametersValues:
     - eParametersAiBTree: 0
-      Value: 2
+      value: 5
     - eParametersAiBTree: 1
-      Value: 1
+      value: 2
     enemyType: 0
