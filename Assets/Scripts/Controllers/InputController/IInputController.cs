@@ -12,5 +12,7 @@ namespace Controllers.InputController
         Action<bool> GetRotateCamera { get; set; }
 
         Action SimpleAttack { get; set; }
+
+        Action<int> FirstAbility { get; set; }
     }
 }

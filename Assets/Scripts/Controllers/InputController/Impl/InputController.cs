@@ -11,6 +11,7 @@ namespace Controllers.InputController.Impl
         public Action<float> RotateMouse { get ; set; }
         public Action<bool> GetRotateCamera { get ; set ; }
         public Action SimpleAttack { get; set ; }
+        public Action<int> FirstAbility { get ; set ; }
 
         private readonly Controls _controls = new ();
                 
@@ -29,6 +30,7 @@ namespace Controllers.InputController.Impl
             _controls.KeyboardAndMouse.GetRotateCamera.canceled += context => GetRotateCamera.Invoke(false);
 
             _controls.KeyboardAndMouse.RotateMouse.performed += context => RotateMouse.Invoke(context.ReadValue<float>());
+            _controls.KeyboardAndMouse.FirstAbility.performed += context => FirstAbility.Invoke(0);
         }
 
         public void OnUpdate()

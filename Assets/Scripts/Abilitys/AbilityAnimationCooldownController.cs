@@ -26,6 +26,7 @@ namespace Assets.Scripts.Abilitys
 
         private IEnumerator CooldownCoroutine()
         {
+            Debug.Log("sss");
             float currentTime = cooldownTime;
             while (currentTime > 0f)
             {

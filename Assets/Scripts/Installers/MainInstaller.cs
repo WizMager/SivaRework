@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Controllers.PlayerAttackController;
+﻿using Assets.Scripts.Abilitys;
+using Assets.Scripts.Controllers.PlayerAttackController;
 using Controllers.InputController.Impl;
 using Controllers.MainController.Impl;
 using Controllers.MoveController;
@@ -28,6 +29,7 @@ namespace Installers
             Container.Bind<PlayerController>().AsSingle();
             Container.Instantiate<MoveController>();
             Container.Instantiate<PlayerAttackController>();
+            Container.Bind<AbilityController>().AsSingle();
         }
     }
 }

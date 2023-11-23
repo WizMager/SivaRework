@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.Scripts.Abilitys
 {
     [CreateAssetMenu(fileName = "AbilityBase", menuName = "Ability/AbilityBase")]
-    public class AbilityBase : ScriptableObject
+    public class AbilityBase : ScriptableObject, IAbilityBase
     {
         [SerializeField] private List<AbilityParameters> _abilities;
 

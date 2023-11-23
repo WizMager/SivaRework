@@ -1,4 +1,5 @@
-﻿using CharacterParameters.Interfaces;
+﻿using Assets.Scripts.Abilitys;
+using CharacterParameters.Interfaces;
 using Controllers.CharacteristicsController;
 using Services.GameFieldProvider;
 using Views;

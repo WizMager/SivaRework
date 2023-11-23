@@ -9,6 +9,6 @@ namespace Assets.Scripts.Abilitys
         public Image image;
         public Text text;
         public Button button;
-        //public EAbilityName abilityName; 
+        public EAbilityName abilityName; 
     }
 }
