@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
-    public class AbilityButtonView : MonoBehaviour
+    public class AbilityButtonsView : MonoBehaviour
     {
         [SerializeField] private List<AbilityButton> abilityButtons;
 

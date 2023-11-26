@@ -1,52 +1,55 @@
-﻿using Controllers.InputController;
-using Controllers.Interfaces;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Controllers.InputController;
+using Controllers.Interfaces;
 using UnityEngine;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     public class AbilityController : IStart
     {
-        private List<AbilityParameters> _abilityParameters;
-        private AbilityButtonView _abilityButtonView;
-        private AbilityParametersController _abilityParametersController;
+        private readonly List<AbilityParameters> _abilityParameters = new ();
+        private readonly AbilityButtonsView _abilityButtons;
+        private readonly AbilityParametersController _abilityParametersController;
 
         public AbilityController(
             IInputController inputController,
-            AbilityParameters abilityParameters)
+            AbilityParameters abilityParameters,
+            AbilityButtonsView abilityButtons
+        )
         {
             _abilityParametersController = new AbilityParametersController(abilityParameters);
+            _abilityButtons = abilityButtons;
 
             foreach (var ability in _abilityParameters)
             {
                 _abilityParameters.Add(ability);
             }
 
-            inputController.FirstAbility += AbilitiUse;
+            inputController.UseAbility += OnUseAbility;
         }
 
         public void OnStart()
         {
-            foreach (var abilitybutton in _abilityButtonView.AbilityButtons)
+            foreach (var abilityButton in _abilityButtons.AbilityButtons)
             {
-                abilitybutton.image.fillAmount = 0f;
-                abilitybutton.text.text = "";
+                abilityButton.image.fillAmount = 0f;
+                abilityButton.text.text = "";
             }
         }
 
-        private void AbilitiUse(int ability)
+        private void OnUseAbility(int abilitySlotNumber)
         {
-            if (_abilityButtonView.AbilityButtons[ability].button.interactable)
-            {
-                _abilityButtonView.AbilityButtons[ability].button.interactable = false;
-                _abilityButtonView.AbilityButtons[ability].button.transform.localScale = new Vector3(0.98f, 0.98f, 1f);
+            if (!_abilityButtons.AbilityButtons[abilitySlotNumber].button.interactable) return;
+            
+            _abilityButtons.AbilityButtons[abilitySlotNumber].button.interactable = false;
+            _abilityButtons.AbilityButtons[abilitySlotNumber].button.transform.localScale = new Vector3(0.98f, 0.98f, 1f);
 
-                var abilityButton = _abilityButtonView.AbilityButtons[ability];
+            var abilityButton = _abilityButtons.AbilityButtons[abilitySlotNumber];
 
-                _abilityButtonView.StartCoroutine(ButtonCooldown(abilityButton, _abilityParametersController.GetParametersRefAbility(EAbilityParameters.Cooldown) /*cooldown*/ ));
-            }
+            var cooldown = _abilityParametersController.GetParametersRefAbility(EAbilityParameters.Cooldown);
+            _abilityButtons.StartCoroutine(ButtonCooldown(abilityButton, cooldown));
         }
 
         private IEnumerator ButtonCooldown(AbilityButton abilityButton, float cooldown)

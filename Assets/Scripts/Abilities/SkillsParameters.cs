@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     public class SkillsParameters
     {
@@ -9,7 +9,7 @@ namespace Assets.Scripts.Abilitys
          private float _cost;
          private float _damageModifier;
 
-        public SkillsParameters(AbilitysValue[] abilitysValue)
+        public SkillsParameters(AbilitiesValue[] abilitysValue)
         {
             foreach (var ability in abilitysValue)
             {

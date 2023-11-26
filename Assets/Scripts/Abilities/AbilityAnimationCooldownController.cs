@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     public class AbilityAnimationCooldownController : MonoBehaviour
     {

@@ -2384,6 +2384,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 682873191}
+  playerParameters: {fileID: 11400000, guid: 8ea9f20ce01214a4186671db8ebbcca5, type: 2}
+  abilityBase: {fileID: 11400000, guid: 9010e4afcc6348a49ae778286295392a, type: 2}
+  abilityButtonsView: {fileID: 853398007}
 --- !u!4 &1332359807
 Transform:
   m_ObjectHideFlags: 0

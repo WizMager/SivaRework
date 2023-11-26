@@ -1,17 +1,17 @@
-﻿namespace Assets.Scripts.Abilitys
+﻿namespace Abilities
 {
     public class AbilityParametersController 
     {
-        private SkillsParameters _abilitysParameters;
+        private readonly SkillsParameters _abilitiesParameters;
 
         public AbilityParametersController(AbilityParameters abilityParameters)
         {
-            _abilitysParameters = new SkillsParameters(abilityParameters.abilitysValues);
+            _abilitiesParameters = new SkillsParameters(abilityParameters.abilitiesValues);
         }
 
         public ref float GetParametersRefAbility(EAbilityParameters eAbilityParameters)
         {
-            return ref _abilitysParameters.GetParametersRefAbility(eAbilityParameters);
+            return ref _abilitiesParameters.GetParametersRefAbility(eAbilityParameters);
         }
     }
 }

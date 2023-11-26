@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.CharacterParameters.UnitsParameters;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.CharacterParameters.UnitsParameters;
 using UnityEngine;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     [CreateAssetMenu(fileName = "AbilityBase", menuName = "Ability/AbilityBase")]
     public class AbilityBase : ScriptableObject, IAbilityBase

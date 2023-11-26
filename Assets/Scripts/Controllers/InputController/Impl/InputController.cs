@@ -1,6 +1,6 @@
-﻿using Controllers.Interfaces;
+﻿using System;
+using Controllers.Interfaces;
 using Controllers.MainController;
-using System;
 using UnityEngine;
 
 namespace Controllers.InputController.Impl
@@ -11,26 +11,27 @@ namespace Controllers.InputController.Impl
         public Action<float> RotateMouse { get ; set; }
         public Action<bool> GetRotateCamera { get ; set ; }
         public Action SimpleAttack { get; set ; }
-        public Action<int> FirstAbility { get ; set ; }
+        public Action<int> UseAbility { get ; set ; }
 
         private readonly Controls _controls = new ();
                 
         public InputController(IMainController mainController)
         {
             mainController.AddController(this);
-            
-            _controls.Enable();
         }
 
         public void OnStart()
         {
-            _controls.KeyboardAndMouse.SimpleAttack.performed += context => SimpleAttack.Invoke();
+            _controls.Enable();
+            
+            _controls.KeyboardAndMouse.SimpleAttack.performed += _ => SimpleAttack?.Invoke();
 
-            _controls.KeyboardAndMouse.GetRotateCamera.performed += context => GetRotateCamera.Invoke(true);
-            _controls.KeyboardAndMouse.GetRotateCamera.canceled += context => GetRotateCamera.Invoke(false);
+            _controls.KeyboardAndMouse.GetRotateCamera.performed += _ => GetRotateCamera?.Invoke(true);
+            _controls.KeyboardAndMouse.GetRotateCamera.canceled += _ => GetRotateCamera?.Invoke(false);
 
-            _controls.KeyboardAndMouse.RotateMouse.performed += context => RotateMouse.Invoke(context.ReadValue<float>());
-            _controls.KeyboardAndMouse.FirstAbility.performed += context => FirstAbility.Invoke(0);
+            _controls.KeyboardAndMouse.RotateMouse.performed += context => RotateMouse?.Invoke(context.ReadValue<float>());
+            
+            _controls.KeyboardAndMouse.FirstAbility.performed += _ => UseAbility?.Invoke(0);
         }
 
         public void OnUpdate()

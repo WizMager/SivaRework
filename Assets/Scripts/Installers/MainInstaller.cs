@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Abilitys;
+﻿using Abilities;
 using Assets.Scripts.Controllers.PlayerAttackController;
+using CharacterParameters.Interfaces;
+using CharacterParameters.UnitsParameters;
 using Controllers.InputController.Impl;
 using Controllers.MainController.Impl;
 using Controllers.MoveController;
@@ -15,7 +17,10 @@ namespace Installers
 {
     public class MainInstaller : MonoInstaller
     {
-        [SerializeField] private GameField gameField; 
+        [SerializeField] private GameField gameField;
+        [SerializeField] private PlayerParametersBase playerParameters;
+        [SerializeField] private AbilityBase abilityBase;
+        [SerializeField] private AbilityButtonsView abilityButtonsView;
         
         public override void InstallBindings()
         {
@@ -24,12 +29,14 @@ namespace Installers
             
             var gameFieldProvider = new GameFieldProvider(gameField);
             Container.Bind<IGameFieldProvider>().FromInstance(gameFieldProvider).AsSingle();
+            Container.Bind<IPlayerParametersBase>().FromInstance(playerParameters).AsSingle();
+            Container.Bind<IAbilityBase>().FromInstance(abilityBase).AsSingle();
+            Container.Bind<AbilityButtonsView>().FromInstance(abilityButtonsView);
 
             Container.Bind<EnemyFactory>().AsSingle();
-            Container.Bind<PlayerController>().AsSingle();
+            Container.Instantiate<PlayerController>();
             Container.Instantiate<MoveController>();
             Container.Instantiate<PlayerAttackController>();
-            Container.Bind<AbilityController>().AsSingle();
         }
     }
 }

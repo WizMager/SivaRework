@@ -13,6 +13,6 @@ namespace Controllers.InputController
 
         Action SimpleAttack { get; set; }
 
-        Action<int> FirstAbility { get; set; }
+        Action<int> UseAbility { get; set; }
     }
 }

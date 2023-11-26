@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     [Serializable]
     public class AbilityButton

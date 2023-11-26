@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Assets.Scripts.Abilitys
+namespace Abilities
 {
     [Serializable]
-    public class AbilitysValue
+    public class AbilitiesValue
     {
         public EAbilityParameters eAbilityParameters;
         public float value;
