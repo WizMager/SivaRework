@@ -9,6 +9,7 @@ namespace Abilities
     public class AbilityBase : ScriptableObject, IAbilityBase
     {
         [SerializeField] private List<AbilityParameters> _abilities;
+        [SerializeField] private EPlayerType _classType;
 
         public List<AbilityParameters> AllAbilities => _abilities;
 
@@ -30,7 +31,7 @@ namespace Abilities
 
             foreach (var ability in _abilities)
             {
-                if (ability.classType != EPlayerType.warrior || ability.classType != classType) continue;
+                if (_classType != classType) continue;
 
                 abilitiesList.Add(ability);
             }

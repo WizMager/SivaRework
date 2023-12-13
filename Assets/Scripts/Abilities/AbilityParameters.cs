@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
 
 namespace Abilities
 {
@@ -8,6 +7,5 @@ namespace Abilities
     {
         public AbilitiesValue[] abilitiesValues;
         public EAbilityName abilityName;
-        public EPlayerType classType;
     }
 }

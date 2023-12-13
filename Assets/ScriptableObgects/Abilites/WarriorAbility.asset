@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: WarriorAbility
   m_EditorClassIdentifier: 
   _abilities:
-  - abilitysValues:
+  - abilitiesValues:
     - eAbilityParameters: 0
       value: 2
     - eAbilityParameters: 1
-      value: 0
+      value: 1
     - eAbilityParameters: 2
-      value: 0
+      value: 10
     - eAbilityParameters: 3
-      value: 2
+      value: 5
     abilityName: 0
-    classType: 0
+  _classType: 0

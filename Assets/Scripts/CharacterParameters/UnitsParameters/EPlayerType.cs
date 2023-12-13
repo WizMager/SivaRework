@@ -2,8 +2,8 @@
 {
     public enum EPlayerType
     {
-        warrior = 0,
-        wizard = 1,
-        rogue = 2
+        Warrior = 0,
+        Wizard = 1,
+        Rogue = 2
     }
 }

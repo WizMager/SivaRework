@@ -1,12 +1,17 @@
-﻿namespace Abilities
+﻿using System.Collections.Generic;
+
+namespace Abilities
 {
     public class AbilityParametersController 
     {
         private readonly SkillsParameters _abilitiesParameters;
 
-        public AbilityParametersController(AbilityParameters abilityParameters)
+        public AbilityParametersController(List<AbilityParameters> abilityParameters)
         {
-            _abilitiesParameters = new SkillsParameters(abilityParameters.abilitiesValues);
+            foreach (var ability in abilityParameters)
+            {
+                _abilitiesParameters = new SkillsParameters(ability.abilitiesValues);
+            }
         }
 
         public ref float GetParametersRefAbility(EAbilityParameters eAbilityParameters)

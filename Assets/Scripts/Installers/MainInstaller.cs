@@ -1,5 +1,6 @@
 ﻿using Abilities;
 using Assets.Scripts.Controllers.PlayerAttackController;
+using Assets.Scripts.Installers;
 using CharacterParameters.Interfaces;
 using CharacterParameters.UnitsParameters;
 using Controllers.InputController.Impl;
@@ -19,9 +20,7 @@ namespace Installers
     {
         [SerializeField] private GameField gameField;
         [SerializeField] private PlayerParametersBase playerParameters;
-        [SerializeField] private AbilityBase abilityBase;
-        [SerializeField] private AbilityButtonsView abilityButtonsView;
-        
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<MainController>().AsSingle().NonLazy();
@@ -30,13 +29,11 @@ namespace Installers
             var gameFieldProvider = new GameFieldProvider(gameField);
             Container.Bind<IGameFieldProvider>().FromInstance(gameFieldProvider).AsSingle();
             Container.Bind<IPlayerParametersBase>().FromInstance(playerParameters).AsSingle();
-            Container.Bind<IAbilityBase>().FromInstance(abilityBase).AsSingle();
-            Container.Bind<AbilityButtonsView>().FromInstance(abilityButtonsView);
-
-            Container.Bind<EnemyFactory>().AsSingle();
+                       
             Container.Instantiate<PlayerController>();
             Container.Instantiate<MoveController>();
             Container.Instantiate<PlayerAttackController>();
+
         }
     }
 }

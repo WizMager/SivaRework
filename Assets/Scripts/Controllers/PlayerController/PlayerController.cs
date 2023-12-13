@@ -22,10 +22,13 @@ namespace Controllers.PlayerController
         {
             var player = gameFieldProvider.GameField.Player.GetComponent<PlayerView>();
 
-            var parameters = playerParameters.GetParametersByType(player.PlayerType);
+            var parameters = playerParameters.GetParametersByType(EPlayerType.Warrior);
 
             _parametersController = new ParametersController(parameters.parametersValue);
-            var abilityController = new AbilityController(inputController, abilityBase.GetAbilityForClass(EPlayerType.warrior)[0], abilityButtonsView);
+
+            var abilityPatametersByClass = abilityBase.GetAbilityForClass(EPlayerType.Warrior);
+
+            var abilityController = new AbilityController(inputController, abilityPatametersByClass, abilityButtonsView);
         }
     }
 }

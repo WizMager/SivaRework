@@ -10,8 +10,6 @@ namespace Assets.Scripts.CharacterParameters.UnitsParameters
     {
         [SerializeField] private EnemyParameters[] enemyParameters;
 
-        public EnemyParameters[] EnemyParameters => enemyParameters;
-
         public EnemyParameters GetParametersByType(EEnemyType enemyType)
         {
             foreach (var item in enemyParameters)

@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Ai;
-using Assets.Scripts.CharacterParameters.Interfaces;
+﻿using Assets.Scripts.CharacterParameters.Interfaces;
 using Assets.Scripts.Factory;
 using CharacterParameters.UnitsParameters;
 using Controllers.EnemyController;
@@ -57,7 +56,8 @@ namespace Factory.ConcreteFactory
 
             var enemyParameters = _enemyParameters.GetParametersByType(EEnemyType.Zombie);
 
-            var enemyController = new EnemyController(EEnemyType.Zombie, enemyParameters, enemyView, _playerView);
+            var enemyController = new EnemyController(enemyParameters, enemyView, _playerView);
+
             _mainController.AddController(enemyController);
         }
     }

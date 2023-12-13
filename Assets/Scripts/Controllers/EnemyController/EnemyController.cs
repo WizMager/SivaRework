@@ -1,7 +1,5 @@
 ﻿using Ai;
-using Assets.Scripts.Ai;
 using Assets.Scripts.CharacterParameters.UnitsParameters;
-using CharacterParameters.UnitsParameters;
 using Controllers.Interfaces;
 using Views;
 
@@ -13,7 +11,7 @@ namespace Controllers.EnemyController
         private readonly SimpleAiBTree _simpleAiBTree;
         private readonly EnemyParametersController _enemyParametersController;
 
-        public EnemyController(EEnemyType enemyType, EnemyParameters enemyParameters, EnemyView enemyView, PlayerView playerView)
+        public EnemyController(EnemyParameters enemyParameters, EnemyView enemyView, PlayerView playerView)
         {
             _enemyParametersController = new EnemyParametersController(enemyParameters);
 

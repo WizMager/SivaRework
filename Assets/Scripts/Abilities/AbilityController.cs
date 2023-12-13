@@ -15,7 +15,7 @@ namespace Abilities
 
         public AbilityController(
             IInputController inputController,
-            AbilityParameters abilityParameters,
+            List<AbilityParameters> abilityParameters,
             AbilityButtonsView abilityButtons
         )
         {
@@ -66,7 +66,7 @@ namespace Abilities
 
             abilityButton.button.interactable = true;
             abilityButton.button.transform.localScale = new Vector3(1f, 1f, 1f);
-            abilityButton.image.fillAmount = 0f;
+            abilityButton.image.fillAmount = 1f;
         }
 
         private void ChangeAbilityButton(AbilityButton abilityButton, float currentTime, float cooldown)
