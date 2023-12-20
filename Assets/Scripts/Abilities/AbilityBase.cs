@@ -1,42 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.Scripts.CharacterParameters.UnitsParameters;
+﻿using Abilities;
 using UnityEngine;
 
-namespace Abilities
+namespace Assets.Scripts.Abilities
 {
     [CreateAssetMenu(fileName = "AbilityBase", menuName = "Ability/AbilityBase")]
-    public class AbilityBase : ScriptableObject, IAbilityBase
+    public class AbilityBase : ScriptableObject
     {
-        [SerializeField] private List<AbilityParameters> _abilities;
-        [SerializeField] private EPlayerType _classType;
+        [SerializeField] private AbilityParameters _abilities;
 
-        public List<AbilityParameters> AllAbilities => _abilities;
-
-        public AbilityParameters GetAbilityByName(EAbilityName abilityName)
-        {
-            foreach (var ability in _abilities)
-            {
-                if (ability.abilityName != abilityName) continue;
-
-                return ability;
-            }
-
-            throw new Exception($"There is no ability with name: {abilityName}");
-        }
-
-        public List<AbilityParameters> GetAbilityForClass(EPlayerType classType)
-        {
-            var abilitiesList = new List<AbilityParameters>();
-
-            foreach (var ability in _abilities)
-            {
-                if (_classType != classType) continue;
-
-                abilitiesList.Add(ability);
-            }
-
-            return abilitiesList;
-        }
+        public AbilityParameters AllAbilities => _abilities;
     }
 }

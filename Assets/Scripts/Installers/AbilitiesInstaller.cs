@@ -6,7 +6,7 @@ namespace Assets.Scripts.Installers
 {
     public class AbilitiesInstaller : MonoInstaller
     {
-        [SerializeField] private AbilityBase abilityBase;
+        [SerializeField] private ClassAbilityBase abilityBase;
         [SerializeField] private AbilityButtonsView abilityButtonsView;
 
         public override void InstallBindings()

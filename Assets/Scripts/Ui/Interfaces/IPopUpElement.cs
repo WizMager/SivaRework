@@ -1,7 +1,9 @@
-﻿namespace Assets.Scripts.Ui
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Ui
 {
     public interface IPopUpElement
     {
-        public void PopUpElement();
+        public void PopUpElement(string text, Transform transform);
     }
 }
